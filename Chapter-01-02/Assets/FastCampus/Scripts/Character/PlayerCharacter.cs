@@ -23,7 +23,6 @@ namespace FastCampus.Characters
         private Animator animator;
 
         readonly int moveHash = Animator.StringToHash("Move");
-        readonly int fallingHash = Animator.StringToHash("Falling");
         #endregion
 
         #region Main Methods
@@ -60,7 +59,7 @@ namespace FastCampus.Characters
                 }
             }
 
-            if (agent.remainingDistance > agent.stoppingDistance)
+            if (agent.remainingDistance > 0.1f)
             {
                 controller.Move(agent.velocity * Time.deltaTime);
                 animator.SetBool(moveHash, true);
@@ -69,15 +68,6 @@ namespace FastCampus.Characters
             {
                 controller.Move(Vector3.zero);
                 animator.SetBool(moveHash, false);
-            }
-
-            if (agent.isOnOffMeshLink)
-            {
-                animator.SetBool(fallingHash, agent.velocity.y != 0.0f);
-            }
-            else
-            {
-                animator.SetBool(fallingHash, false);
             }
         }
 
