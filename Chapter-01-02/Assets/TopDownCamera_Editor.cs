@@ -39,12 +39,12 @@ public class TopDownCamera_Editor : Editor
         // Creare slider handles to adjust camera properties
         Handles.color = new Color(1f, 0f, 0f, 0.5f);
         TargetCamera.distance = TargetCamera.distance = Handles.ScaleSlider(TargetCamera.distance, targetPosition, -cameraTarget.forward, Quaternion.identity, TargetCamera.distance, 0.01f);
-        TargetCamera.distance = Mathf.Clamp(TargetCamera.distance, 0.1f, float.MaxValue);
+        TargetCamera.distance = Mathf.Clamp(TargetCamera.distance, 1f, float.MaxValue);
 
         Handles.color = new Color(0f, 0f, 1f, 0.5f);
 
         TargetCamera.height = Handles.ScaleSlider(TargetCamera.height, targetPosition, Vector3.up, Quaternion.identity, TargetCamera.height, 0.01f);
-        TargetCamera.height = Mathf.Clamp(TargetCamera.height, 0.1f, float.MaxValue);
+        TargetCamera.height = Mathf.Clamp(TargetCamera.height, 1f, float.MaxValue);
 
         GUIStyle style = new GUIStyle();
         style.fontSize = 15;
